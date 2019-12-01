@@ -1,7 +1,7 @@
 import scala.io.Source
 import scala.annotation.tailrec
 
-object day1 {
+object Day1 {
   @tailrec def secondStar(fuel: Int, aggr: Int = 0) : Int = {
     val current_fuel : Int = fuel / 3 - 2;
     if (current_fuel <= 0)
@@ -12,11 +12,10 @@ object day1 {
 
   def main(args: Array[String]) {
     val path : String = {
-      if (args.length == 0) {
+      if (args.length == 0) 
         "./input.txt"
-      } else {
+      else
         args(0)
-     }
     }
 
     val list = Source.fromFile(path).getLines.toArray.map(_.toInt);
