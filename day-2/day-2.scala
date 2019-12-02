@@ -18,11 +18,11 @@ object Day2 {
     arr(0)
   }
 
-  def secondStar(arr: Array[Int], required: Int): Int = {
-    var matched = -1
+  def secondStar(arr: Array[Int], required: Int): Array[Int] = {
+    var matched: Array[Int] = Array()
     for (i <- 0 to 98; j <- 0 to 98) {
       if (firstStar(arr, i, j) == required)
-        matched = i*100 + j
+        matched :+= i*100 + j
     }
     matched
   }
@@ -46,6 +46,8 @@ object Day2 {
 
     val arr: Array[Int] = Source.fromFile("./input.txt").getLines.toList(0).split(",").map(_.toInt)
     println("First answer: " + firstStar(arr, newpos1, newpos2))
-    println("Second answer: " + secondStar(arr, required)) 
+    val matched: Array[Int] = secondStar(arr, required)
+    if (matched.length > 0)
+      println("Second answer: " + matched(0))
   }
 }
