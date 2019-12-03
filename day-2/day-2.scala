@@ -44,7 +44,7 @@ object Day2 {
     }
 
 
-    val arr: Array[Int] = Source.fromFile("./input.txt").getLines.toList(0).split(",").map(_.toInt)
+    val arr: Array[Int] = Source.fromFile(path).getLines.toList(0).split(",").map(_.toInt)
     println("First answer: " + firstStar(arr, newpos1, newpos2))
     val matched: Array[Int] = secondStar(arr, required)
     if (matched.length > 0)
