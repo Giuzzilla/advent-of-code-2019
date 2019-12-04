@@ -28,3 +28,4 @@ def both_stars(psw_range, n_star):
 if __name__ == "__main__":
     print(f"First star answer: {both_stars([234208, 765869], 1)}")
     print(f"Second star answer: {both_stars([234208, 765869], 2)}")
+
