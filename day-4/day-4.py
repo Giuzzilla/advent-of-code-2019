@@ -15,10 +15,10 @@ def both_stars(psw_range, n_star):
         for key in count.keys():
             if n_star == 1 and count[key] >= 2:
                 exist_double = True
-                continue
+                break
             elif n_star == 2 and count[key] == 2:
                 exist_double = True
-                continue
+                break
 
         if exist_double:
             matching += 1
