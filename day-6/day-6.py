@@ -31,7 +31,7 @@ def first_star(arr):
 # Despite this can be easily done with a BFS/DFS, this is also another possible solution.
 # Possibly faster.
 # Find the paths to root of YOU.
-# Then do the same for SAN but stop at the first occurence of a node encountered 
+# Then do the same for SAN but stop at the first occurence of a node encountered
 # in the path of YOU.
 # Then join together the path of YOU (sliced up to the comomn point) with the
 # inverted path of SAN.
