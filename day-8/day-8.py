@@ -1,4 +1,4 @@
-#%%
+#https://adventofcode.com/2019/day/8
 
 def clean_input(path = "/home/giuzzilla/Desktop/advent-of-code-2019/day-8/input.txt"):
     input_f = open(path).readlines()
