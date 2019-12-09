@@ -1,5 +1,4 @@
 #https://adventofcode.com/2019/day/9
-from itertools import permutations
 
 def clean_input(path = "./input.txt"):
     input_f = open(path).readlines()
