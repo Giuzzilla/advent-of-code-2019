@@ -2,7 +2,7 @@
 from itertools import permutations
 
 
-def clean_input(path = "/home/giuzzilla/Desktop/advent-of-code-2019/day-7/input.txt"):
+def clean_input(path = "./input.txt"):
     input_f = open(path).readlines()
     return [int(el) for el in input_f[0].strip().split(',')]
 
