@@ -117,5 +117,5 @@ def reader(arr, input_value, phase = None, pos = 0, relativeBase = 0, initialize
 if __name__ == "__main__":
     arr = clean_input()
 
-    print(f"First star answer: {reader(arr, 1)}")
-    print(f"Second star answer: {reader(arr, 2)}")
+    print(f"First star answer: {reader(arr, 1)[0]}")
+    print(f"Second star answer: {reader(arr, 2)[0]}")
