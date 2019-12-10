@@ -1,13 +1,14 @@
-# https://adventofcode.com/2019/day/9
-
+#https://adventofcode.com/2019/day/9
 import numpy as np
+from itertools import zip_longest, islice
 
-def clean_input(path="./input.txt"):
+
+def clean_input(path="./day-10/input.txt"):
     input_f = open(path).readlines()
     return np.vstack([[True if e == '#' else False for e in line.strip()] for line in input_f])
 
-def max_seen(mat):
-    asteroid_pos = np.argwhere(mat)
+
+def max_seen(asteroid_pos):
     seen = []
     for asteroid in asteroid_pos:
         seen_angles = set()
@@ -22,25 +23,23 @@ def max_seen(mat):
             if angle not in seen_angles:
                 seen_angles.add(angle)
                 seen[-1] += 1
+    
+    station = asteroid_pos[np.argmax(seen)]
+    return max(seen), station
 
-    return max(seen), asteroid_pos[np.argmax(seen)]
 
-def second_star(mat, station=None):
-    if station is None:
-        station = max_seen(mat)[1]
-
-    asteroid_pos = np.argwhere(mat)
-
+def second_star(asteroid_pos, station):
     asteroid_with_coeff = []
     for other in asteroid_pos:
         if (station == other).all():
             continue
-        diff = station - other
+
+        diff = other - station
         x = diff[1]
         y = diff[0]
         # Rotate by 90 degrees so that UP is the 0° coord
-        angle = np.angle(np.complex(y, -x))
-        # Turn angles into absolutes
+        angle = np.angle(np.complex(-y, x))
+        # Turn angles into [0, 2*pi] range
         absangle = (angle + 2 * np.pi) % (2 * np.pi)
 
         asteroid_with_coeff.append([other, absangle])
@@ -53,19 +52,17 @@ def second_star(mat, station=None):
     angles = list(dict.fromkeys(map(lambda t: t[1], ordered)))
     grouped_by_angle = [list(map(lambda t: t[0], filter(
         lambda t: t[1] == angle, ordered))) for angle in angles]
-    rotations = 0
-    while len(seen) < 200:
-        for group in grouped_by_angle:
-            if len(group) > rotations:
-                current = group[rotations]
-                seen.append(current)
-        rotations += 1
 
-    n_200 = seen[199]
-    return n_200[1]*100 + n_200[0]
+    # Zip lists of angles to have the correct progression
+    # then flatten (and filter None-values)
+    listed = [item for sublist in zip_longest(
+        *grouped_by_angle) for item in sublist if item is not None]
+
+    return listed[199][1]*100 + listed[199][0]
 
 if __name__ == "__main__":
     mat = clean_input()
-    station = max_seen(mat)
+    positions = np.argwhere(mat)
+    station = max_seen(positions)
     print(f"First star answer: {station[0]}")
-    print(f"Second star answer: {second_star(mat, station[1])}")
+    print(f"Second star answer: {second_star(positions, station[1])}")
