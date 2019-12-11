@@ -1,4 +1,4 @@
-#https://adventofcode.com/2019/day/9
+#https://adventofcode.com/2019/day/10
 import numpy as np
 from itertools import zip_longest, islice
 
