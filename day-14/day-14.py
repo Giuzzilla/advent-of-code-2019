@@ -101,4 +101,3 @@ if __name__ == "__main__":
 
     print(f"First star answer: {str(first_star(production, set_of_materials))}")
     print(f"Second star answer: {str(second_star(production, set_of_materials))}")
-
