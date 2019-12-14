@@ -1,7 +1,7 @@
 #https://adventofcode.com/2019/day/13
 import numpy as np
 
-def clean_input(path = "./day-13/input.txt"):
+def clean_input(path = "./input.txt"):
     input_f = open(path).readlines()
     return [int(el) for el in input_f[0].strip().split(',')]
 
